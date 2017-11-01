@@ -42,6 +42,7 @@ import com.github.dfa.diaspora_android.R;
 import com.github.dfa.diaspora_android.activity.MainActivity;
 import com.github.dfa.diaspora_android.ui.theme.ThemeHelper;
 import com.github.dfa.diaspora_android.ui.theme.ThemedFragment;
+import com.github.dfa.diaspora_android.util.ActivityUtils;
 import com.github.dfa.diaspora_android.util.AppLog;
 import com.github.dfa.diaspora_android.util.AppSettings;
 
@@ -228,13 +229,21 @@ public class BrowserFragment extends ThemedFragment {
 
         // Only show share intent when Action Share Screenshot was selected
         if (hasToShareScreenshot) {
+
+            Uri bmpUri = ActivityUtils.getFileSharingUri(getContext(),new File(fileSaveDirectory, fileSaveName));
+
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("image/jpeg");
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, webView.getTitle());
             sharingIntent.putExtra(Intent.EXTRA_TEXT, webView.getUrl());
-            Uri bmpUri = Uri.fromFile(new File(fileSaveDirectory, fileSaveName));
+            sharingIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             sharingIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-            startActivity(Intent.createChooser(sharingIntent, getString(R.string.action_share_dotdotdot)));
+
+            PackageManager pm = getActivity().getPackageManager();
+
+            if (sharingIntent.resolveActivity(pm) != null) {
+                startActivity(Intent.createChooser(sharingIntent, getString(R.string.action_share_dotdotdot)));
+            }
         } else {
             // Broadcast that this file is indexable
             File file = new File(fileSaveDirectory, fileSaveName);

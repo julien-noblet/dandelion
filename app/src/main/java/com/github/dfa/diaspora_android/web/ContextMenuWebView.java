@@ -39,6 +39,7 @@ import android.widget.Toast;
 import com.github.dfa.diaspora_android.R;
 import com.github.dfa.diaspora_android.activity.MainActivity;
 import com.github.dfa.diaspora_android.service.ImageDownloadTask;
+import com.github.dfa.diaspora_android.util.ActivityUtils;
 
 import java.io.File;
 
@@ -165,7 +166,8 @@ public class ContextMenuWebView extends NestedWebView {
                                 new ImageDownloadTask(null, local.getPath()) {
                                     @Override
                                     protected void onPostExecute(Bitmap result) {
-                                        Uri myUri = Uri.fromFile(new File(local.getPath()));
+
+                                        Uri myUri = ActivityUtils.getFileSharingUri(context, new File(local.getPath()));
                                         Intent sharingIntent = new Intent();
                                         sharingIntent.setAction(Intent.ACTION_SEND);
                                         sharingIntent.putExtra(Intent.EXTRA_STREAM, myUri);
