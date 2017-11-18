@@ -1,28 +1,20 @@
 apply plugin: 'com.android.application'
-
-ext {
-    version_sdk = [
-            compileSdk: 27,
-            minSdk    : 17,
-    ]
-    version_lib = [
-            appcompat   : "27.0.0",
-            butterknife: "8.8.1",
-            netcipher   : "2.0.0-alpha1",
-    ]
+if (enable_plugin_kotlin) {
+    apply plugin: 'kotlin-android'
+    apply plugin: 'kotlin-android-extensions'
+    apply plugin: 'kotlin-kapt'
 }
 
-
 android {
-    compileSdkVersion version_sdk.compileSdk
+    compileSdkVersion version_setup_compileSdk
     flavorDimensions "default"
 
     defaultConfig {
-        minSdkVersion version_sdk.minSdk
-        targetSdkVersion version_sdk.compileSdk
+        minSdkVersion version_setup_minSdk
+        targetSdkVersion version_setup_targetSdk
         buildConfigField "boolean", "IS_TEST_BUILD", "false"
         buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
-        buildConfigField("String[]", "APPLICATION_LANGUAGES", '{' + getUsedAndroidLanguages().collect {"\"${it}\""}.join(",")  + '}')
+        buildConfigField "String[]", "APPLICATION_LANGUAGES", "${getUsedAndroidLanguages()}"
         buildConfigField "String", "GITHASH", "\"${getGitHash()}\""
 
         applicationId "com.github.dfa.diaspora_android"
@@ -47,12 +39,18 @@ android {
         }
     }
 
+    sourceSets {
+        if (enable_plugin_kotlin) {
+            main.java.srcDirs += 'src/main/kotlin'
+        }
+    }
+
     productFlavors {
         flavorDefault {
         }
 
         /*
-flavorGplay {
+        flavorGplay {
             buildConfigField "boolean", "IS_GPLAY_BUILD", "true"
         }*/
         flavorTest {
@@ -78,19 +76,30 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Android standard libs
-    implementation "com.android.support:appcompat-v7:${version_lib.appcompat}"
-    implementation "com.android.support:design:${version_lib.appcompat}"
-    implementation "com.android.support:support-v4:${version_lib.appcompat}"
-    implementation "com.android.support:customtabs:${version_lib.appcompat}"
-    implementation "com.android.support:cardview-v7:${version_lib.appcompat}"
+    implementation "com.android.support:appcompat-v7:${version_library_appcompat}"
+    implementation "com.android.support:design:${version_library_appcompat}"
+    implementation "com.android.support:support-v4:${version_library_appcompat}"
+    implementation "com.android.support:customtabs:${version_library_appcompat}"
+    implementation "com.android.support:cardview-v7:${version_library_appcompat}"
 
     // UI libraries
     implementation "com.github.DASAR:ShiftColorPicker:v0.5"
 
     // Tool libraries
-    implementation "com.jakewharton:butterknife:${version_lib.butterknife}"
-    implementation "info.guardianproject.netcipher:netcipher:${version_lib.netcipher}"
-    implementation "info.guardianproject.netcipher:netcipher-webkit:${version_lib.netcipher}"
+    implementation "info.guardianproject.netcipher:netcipher:${version_library_netcipher}"
+    implementation "info.guardianproject.netcipher:netcipher-webkit:${version_library_netcipher}"
+    implementation "com.jakewharton:butterknife:${version_library_butterknife}"
+    if (enable_plugin_kotlin) {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$version_plugin_kotlin"
+    }
 
-    annotationProcessor "com.jakewharton:butterknife-compiler:${version_lib.butterknife}"
+    // Processors
+    def anpros = ["com.jakewharton:butterknife-compiler:${version_library_butterknife}"]
+    for (anpro in anpros) {
+        if (enable_plugin_kotlin) {
+            kapt anpro
+        } else {
+            annotationProcessor anpro
+        }
+    }
 }
