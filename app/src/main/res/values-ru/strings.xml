@@ -74,4 +74,6 @@
   <string name="jump_to_last_visited_timestamp_in_stream">Перейти к последней просмотренной странице в Потоке?</string>
   <string name="pref_summary__is_statusbar_hidden">Скрыть строку состояния в главном окне</string>
   <string name="pref_title__is_statusbar_hidden">Скрыть строку состояния</string>
+  <string name="pref_summary__show_title">Показывать заголовок на главном экране</string>
+  <string name="pref_title__show_title">Показывать заголовок</string>
 </resources>

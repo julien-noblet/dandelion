@@ -74,4 +74,6 @@
   <string name="jump_to_last_visited_timestamp_in_stream">Sauter à la dernière page visitée dans le flux ?</string>
   <string name="pref_summary__is_statusbar_hidden">Cacher la barre de statut sur la vue principale</string>
   <string name="pref_title__is_statusbar_hidden">Cacher la barre de statut</string>
+  <string name="pref_summary__show_title">Afficher le titre dans la vue principale</string>
+  <string name="pref_title__show_title">Afficher le titre</string>
 </resources>

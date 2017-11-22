@@ -74,4 +74,6 @@
   <string name="jump_to_last_visited_timestamp_in_stream">ストリームの最後に訪れたページに移動しますか?</string>
   <string name="pref_summary__is_statusbar_hidden">メイン画面のステータスバーを非表示にします</string>
   <string name="pref_title__is_statusbar_hidden">ステータスバーを非表示</string>
+  <string name="pref_summary__show_title">メインビューにタイトルを表示します</string>
+  <string name="pref_title__show_title">タイトルを表示</string>
 </resources>

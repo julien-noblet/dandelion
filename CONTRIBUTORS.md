@@ -1,6 +1,5 @@
 <!--
 This file contains references to people who contributed to the app.
-If you helped by translating the app, please send a message on Crowdin.  
 You can also send a mail to [gsantner AT mailbox DOT org](http://gsantner.net#contact) to get included.
 
 Schema:  **[Name](Reference)**<br/>~° Text

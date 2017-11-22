@@ -80,4 +80,6 @@
   <string name="jump_to_last_visited_timestamp_in_stream">Brincare a s\'ùrtima pàgina visitada in su flussu?</string>
   <string name="pref_summary__is_statusbar_hidden">Istichi sa barra de s\'istadu in sa vista printzipale</string>
   <string name="pref_title__is_statusbar_hidden">Istichi sa barra de s\'istadu</string>
+  <string name="pref_summary__show_title">Ammustra su tìtulu in sa vista printzipale</string>
+  <string name="pref_title__show_title">Ammustra tìtulu</string>
 </resources>
