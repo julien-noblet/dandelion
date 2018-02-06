@@ -37,7 +37,7 @@
     <shortcut
         android:shortcutId="sc_aspects"
         android:enabled="true"
-        android:icon="@drawable/sc_aspects"
+        android:icon="@drawable/sc_aspect"
         android:shortcutShortLabel="@string/aspects"
         android:shortcutLongLabel="@string/aspects"
         android:shortcutDisabledMessage="@string/aspects">
