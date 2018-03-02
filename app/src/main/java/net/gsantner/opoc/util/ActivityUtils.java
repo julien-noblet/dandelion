@@ -28,6 +28,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 
 
 @SuppressWarnings({"WeakerAccess", "unused", "SameParameterValue", "SpellCheckingInspection"})
@@ -93,16 +94,16 @@ public class ActivityUtils extends net.gsantner.opoc.util.ContextUtils {
     }
 
     public void hideSoftKeyboard() {
-        InputMethodManager inputMethodManager = (InputMethodManager) _activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        if (_activity.getCurrentFocus() != null && _activity.getCurrentFocus().getWindowToken() != null) {
-            inputMethodManager.hideSoftInputFromWindow(_activity.getCurrentFocus().getWindowToken(), 0);
+        InputMethodManager imm = (InputMethodManager) _activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if (imm != null && _activity.getCurrentFocus() != null && _activity.getCurrentFocus().getWindowToken() != null) {
+            imm.hideSoftInputFromWindow(_activity.getCurrentFocus().getWindowToken(), 0);
         }
     }
 
     public void showSoftKeyboard() {
-        InputMethodManager inputMethodManager = (InputMethodManager) _activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        if (_activity.getCurrentFocus() != null && _activity.getCurrentFocus().getWindowToken() != null) {
-            inputMethodManager.showSoftInput(_activity.getCurrentFocus(), InputMethodManager.SHOW_FORCED);
+        InputMethodManager imm = (InputMethodManager) _activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if (imm != null && _activity.getCurrentFocus() != null && _activity.getCurrentFocus().getWindowToken() != null) {
+            imm.showSoftInput(_activity.getCurrentFocus(), InputMethodManager.SHOW_FORCED);
         }
     }
 
@@ -126,6 +127,16 @@ public class ActivityUtils extends net.gsantner.opoc.util.ContextUtils {
         dialog.show();
     }
 
+    public void showDialogWithRawFileInWebView(String fileInRaw, @StringRes int resTitleId) {
+        WebView wv = new WebView(_context);
+        wv.loadUrl("file:///android_res/raw/" + fileInRaw);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(_context)
+                .setPositiveButton(android.R.string.ok, null)
+                .setTitle(resTitleId)
+                .setView(wv);
+        dialog.show();
+    }
+
     // Toggle with no param, else set visibility according to first bool
     public void toggleStatusbarVisibility(boolean... optionalForceVisible) {
         WindowManager.LayoutParams attrs = _activity.getWindow().getAttributes();
@@ -140,7 +151,7 @@ public class ActivityUtils extends net.gsantner.opoc.util.ContextUtils {
         _activity.getWindow().setAttributes(attrs);
     }
 
-    public void showRateOnGplayDialog() {
+    public void showGooglePlayEntryForThisApp() {
         String pkgId = "details?id=" + _activity.getPackageName();
         Intent goToMarket = new Intent(Intent.ACTION_VIEW, Uri.parse("market://" + pkgId));
         goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |

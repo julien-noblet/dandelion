@@ -145,7 +145,11 @@ public class AppSettings extends AppSettingsBase {
     }
 
     public void setPodAspects(DiasporaAspect[] aspects) {
-        setStringArray(R.string.pref_key__podprofile_aspects, aspects, _prefPod);
+        String[] strs = new String[aspects.length];
+        for (int i = 0; i < strs.length; i++) {
+            strs[i] = aspects[i].toShareAbleText();
+        }
+        setStringArray(R.string.pref_key__podprofile_aspects, strs, _prefPod);
     }
 
     public DiasporaAspect[] getAspects() {

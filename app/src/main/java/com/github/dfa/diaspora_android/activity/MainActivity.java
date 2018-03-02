@@ -87,7 +87,7 @@ import com.github.dfa.diaspora_android.web.ProxyHandler;
 import com.github.dfa.diaspora_android.web.WebHelper;
 import com.github.dfa.diaspora_android.web.custom_tab.CustomTabActivityHelper;
 
-import net.gsantner.opoc.util.SimpleMarkdownParser;
+import net.gsantner.opoc.format.markdown.SimpleMarkdownParser;
 
 import java.io.IOException;
 
