@@ -121,6 +121,8 @@ public class LanguagePreference extends ListPreference {
                 languages.add(summarizeLocale(locale, langId) + ";" + langId);
             }
         }
+        String aa = contextUtils.str("build_conf__detected_languages");
+        String a = aa;
 
         // Sort languages naturally
         Collections.sort(languages);

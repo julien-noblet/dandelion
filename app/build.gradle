@@ -14,7 +14,8 @@ android {
         targetSdkVersion version_setup_targetSdk
         buildConfigField "boolean", "IS_TEST_BUILD", "false"
         buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
-        buildConfigField "String[]", "APPLICATION_LANGUAGES", "${getUsedAndroidLanguages()}"
+        //buildConfigField "String[]", "APPLICATION_LANGUAGES", "${getUsedAndroidLanguages()}"
+        resValue "string", "bc_notr__detected_languages", "${getUsedAndroidLanguages()}"
         buildConfigField "String", "GITHASH", "\"${getGitHash()}\""
 
         applicationId "com.github.dfa.diaspora_android"

@@ -100,11 +100,16 @@ public class ContextUtils {
         public static final String ARRAY = "array";
         public static final String DIMEN = "dimen";
         public static final String MENU = "menu";
+        public static final String BOOL = "bool";
         public static final String RAW = "raw";
     }
 
     public String str(@StringRes int strResId) {
         return _context.getString(strResId);
+    }
+
+    public String str(String strResKey) {
+        return str(getResId(ResType.STRING, strResKey));
     }
 
     public Drawable drawable(@DrawableRes int resId) {
