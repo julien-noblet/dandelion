@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/tag/diaspora-for-android/dandelion.svg)](https://github.com/diaspora-for-android/dandelion/releases)
 [![Build Status](https://travis-ci.org/Diaspora-for-Android/dandelion.svg?branch=master)](https://travis-ci.org/Diaspora-for-Android/dandelion)
-[![Translate - with Stringlate](https://img.shields.io/badge/stringlate-translate-green.svg)](https://lonamiwebs.github.io/stringlate/translate?git=https%3A%2F%2Fgithub.com%2Fdiaspora-for-android%2Fdandelion.git)
+[![Translate - with Stringlate](https://img.shields.io/badge/stringlate-translate-green.svg)](https://lonamiwebs.github.io/stringlate/translate?git=https%3A%2F%2Fgithub.com%2Fdiaspora-for-android%2Fdandelion.git&mail=gro.xobliam@@rentnasg)
 [![Chat - Matrix](https://img.shields.io/badge/chat-on%20matrix-blue.svg)](https://matrix.to/#/#dandelion:matrix.org) [![Chat - FreeNode IRC](https://img.shields.io/badge/chat-on%20irc-blue.svg)](https://kiwiirc.com/client/irc.freenode.net/?nick=dandelion-anon|?##dandelion)
 [![Donate Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange.svg)](http://gsantner.net/#donate)
 [![Donate LiberaPay](https://img.shields.io/badge/donate-liberapay-orange.svg)](https://liberapay.com/gsantner/donate)
